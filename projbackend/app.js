@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 
 //my routes
 app.use("/api", authRoutes);
-// hii this is from the git hub ok got it brother
+
 // my port address
 const port = process.env.PORT;
 
