@@ -37,24 +37,22 @@ exports.signin = (req,res) => {
     const errors = validationResult(req);
 
     const {email, password} = req.body;
-    const user = new User(req.body);
-
     if(!errors.isEmpty()) {
         return res.status(422).json({
             error: errors.array()[0].msg
         });
     };
-
+    
     User.findOne({email}, (err, user) => {
         if(err) {
             res.status(400).json({
-                err: "USER email does not exist"
+                error: "USER email does not exist"
             });
         }
 
         if(!user.autheticate(password)) {
             return res.status(401).json({
-                err: "Email and password do not match"
+                error: "Email and password do not match"
             });
         }
 
