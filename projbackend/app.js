@@ -1,12 +1,15 @@
-require('dotenv').config();
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const {} = require("./controllers/auth");
+
+// my routes
 const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
 
 //connect to the DB
@@ -30,9 +33,10 @@ app.use(bodyParser.json());
 
 //my routes
 app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 
 // my port address
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 //console log thing
 app.listen(port, () => {
