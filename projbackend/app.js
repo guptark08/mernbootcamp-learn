@@ -7,38 +7,34 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-// my routes
+//My routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 
-
-//connect to the DB
-mongoose.connect("mongodb://localhost:27017/tshirt", 
-{   useNewUrlParser: true,
+//DB Connection
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
-}).then(() => {
+  })
+  .then(() => {
     console.log("DB CONNECTED");
-}).catch(() => {
-    console.log("DB NOT CONNECTED");
-});
+  });
 
-
-// this is my middleware
-app.use(cors());
-app.use(express.urlencoded({extended:true}));
-app.use(express.json());
-app.use(cookieParser());
+//Middlewares
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
 
-//my routes
+//My Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 
-// my port address
+//PORT
 const port = process.env.PORT || 8000;
 
-//console log thing
+//Starting a server
 app.listen(port, () => {
-    console.log(`app is running at ${port}`);
+  console.log(`app is running at ${port}`);
 });
