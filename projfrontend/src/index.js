@@ -1,5 +1,5 @@
-import { React } from "react";
-import Routess from "./Routes";
-import * as ReactDOM from 'react-dom';
+import { React } from "react"; //this is default   
+import Routes from "./Routes"; //this is for route where the route are coming from
+import ReactDOM from 'react-dom'; //this is dom mainpulation to connect the thing with the files with each others
 
-ReactDOM.render(<Routess />, document.getElementById("root"));
+ReactDOM.render(<Routes />, document.getElementById("root"));

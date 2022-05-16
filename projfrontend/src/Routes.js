@@ -1,14 +1,14 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // "switch" is replaced with "Routes" in v6 of lib
+import { BrowserRouter, Switch, Route } from "react-router-dom"; // "switch" is replaced with "Routes" in v6 of lib
 import Home from "./core/Home";
-const Routess = () => {
+const Routes = () => {
   return (
     <BrowserRouter>
-        <Routes>
+        <Switch>
             <Route path='/' exact component={Home} />
-        </Routes>
+        </Switch>
     </BrowserRouter>
   );
 };
 
-export default Routess;
+export default Routes;
